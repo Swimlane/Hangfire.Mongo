@@ -88,6 +88,7 @@ namespace Hangfire.Mongo.Migration
                     };
                 
                 case MongoSchema.Version13:
+                case MongoSchema.Version14:
                     return new[]
                     {
                         prefix + ".jobGraph",
