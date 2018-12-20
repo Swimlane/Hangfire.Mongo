@@ -64,7 +64,7 @@
         /// <summary>
         /// Schema Version 14
         /// </summary>
-        Version14 = 14,
+        Version14 = 14
     }
 
 }
