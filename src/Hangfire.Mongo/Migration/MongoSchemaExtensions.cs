@@ -83,7 +83,7 @@ namespace Hangfire.Mongo.Migration
                         prefix + ".stateData"
                     };
                 
-                case MongoSchema.Version13:                   
+                case MongoSchema.Version13:
                 case MongoSchema.Version14:
                     return new[]
                     {

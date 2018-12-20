@@ -60,11 +60,11 @@
         /// Schema Version 13
         /// </summary>
         Version13 = 13,
-        
+
         /// <summary>
-        /// Schema Version 13
+        /// Schema Version 14
         /// </summary>
-        Version14 = 14
+        Version14 = 14,
     }
 
 }
