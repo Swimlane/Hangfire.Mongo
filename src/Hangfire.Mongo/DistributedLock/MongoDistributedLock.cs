@@ -174,6 +174,16 @@ namespace Hangfire.Mongo.DistributedLock
                         _locks.InsertOne(testLock);
                         now = Wait(timeout);
                     }
+                    catch (Exception e)
+                    {
+                        var testLock = new DistributedLockDto
+                        {
+                            Resource = e.GetType().ToString() + "_" + Guid.NewGuid().ToString(),
+                            ExpireAt = DateTime.Now.AddDays(7)
+                        };
+                        _locks.InsertOne(testLock);
+                        now = Wait(timeout);
+                    }
                 }
 
                 if (!isLockAcquired)
