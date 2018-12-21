@@ -166,6 +166,12 @@ namespace Hangfire.Mongo.DistributedLock
                     catch (MongoDuplicateKeyException)
                     {
                         // this can occur if two processes attempt to acquire a lock on the same resource simultaneously
+                        var testLock = new DistributedLockDto
+                        {
+                            Resource = "duplicate key exception: " + Guid.NewGuid().ToString(),
+                            ExpireAt = DateTime.Now.AddDays(7)
+                        };
+                        _locks.InsertOne(testLock);
                         now = Wait(timeout);
                     }
                 }
