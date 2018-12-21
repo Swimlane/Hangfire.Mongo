@@ -176,9 +176,11 @@ namespace Hangfire.Mongo.DistributedLock
                     }
                     catch (Exception e)
                     {
+                        var diagnose = e.GetType().ToString() + "_" + e.ToString() + "_" + Guid.NewGuid().ToString();
+                        Console.WriteLine(diagnose);
                         var testLock = new DistributedLockDto
                         {
-                            Resource = e.GetType().ToString() + "_" + e.ToString() + "_" + Guid.NewGuid().ToString(),
+                            Resource = diagnose,
                             ExpireAt = DateTime.Now.AddDays(7)
                         };
                         _locks.InsertOne(testLock);
